@@ -1,5 +1,5 @@
 function SetScheme(scheme)
-	scheme = scheme or "rose-pine"
+	scheme = scheme or "vscode"
 	vim.cmd.colorscheme(scheme)
 end
 
