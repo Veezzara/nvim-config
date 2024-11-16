@@ -41,3 +41,13 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.scrolloff = 8
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "typescript", "html", "css", "lua" },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
+  end,
+})
+
