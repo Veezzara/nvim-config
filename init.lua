@@ -1,4 +1,3 @@
-require("core.remaps")
-
 require("plugins.init")
 
+require("core.remaps")
