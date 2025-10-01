@@ -4,6 +4,10 @@ M.remaps = {}
 M.win_id = nil
 M.buf_id = nil
 
+function M.reset()
+	M.remaps = {}
+end
+
 function M.add_remap(mode, lhs, rhs, description, tags)
 	vim.keymap.set(mode, lhs, rhs)
 
