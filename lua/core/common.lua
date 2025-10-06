@@ -16,6 +16,10 @@ vim.diagnostic.config({
 	},
 })
 
+local function confirmCompletion(fallback)
+	return vim.fn.pumvisible() == 1 and vim.api.nvim_replace_termcodes("<C-y>", true, true, true) or fallback
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
@@ -24,11 +28,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 			vim.keymap.set('i', '<C-Space>', function()
 				vim.lsp.completion.get()
-			end
-		)
-	end
-end,
+			end)
+
+			vim.keymap.set('i', '<Tab>', function()
+				confirmCompletion('\t')
+			end)
+		end
+	end,
 })
 
-vim.opt.completeopt = { "menuone", "noselect", "popup" }
+vim.opt.completeopt = { "menu", "menuone", "noinsert", "popup" }
 
