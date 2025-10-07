@@ -34,6 +34,5 @@ remapper.add_remap('n', 'ts', builtin.lsp_document_symbols, 'Document symbols', 
 -- Telescope Git Mappings
 remapper.add_remap('n', 'gc', builtin.git_commits, 'Git commits', { 'Git' })
 remapper.add_remap('n', 'gbc', builtin.git_bcommits, 'Git buffer commits', { 'Git' })
-remapper.add_remap('n', 'gcr', builtin.git_bcommits_range, 'Git range commits', { 'Git' })
 remapper.add_remap('n', 'gb', builtin.git_branches, 'Git branches', { 'Git' })
 
