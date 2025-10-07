@@ -16,13 +16,22 @@ vim.diagnostic.config({
 	},
 })
 
-local function confirmCompletion(fallback)
-	return vim.fn.pumvisible() == 1 and vim.api.nvim_replace_termcodes("<C-y>", true, true, true) or fallback
+local function confirmCompletion(input)
+	local key
+
+	if vim.fn.pumvisible() == 1 then
+		key = vim.api.nvim_replace_termcodes('<C-y>', true, true, true)
+	else
+		key = vim.api.nvim_replace_termcodes(input, true, true, true)
+	end
+
+	return key
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
 		if client:supports_method("textDocument/completion") then
 			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 
@@ -31,8 +40,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			end)
 
 			vim.keymap.set('i', '<Tab>', function()
-				confirmCompletion('\t')
-			end)
+				return confirmCompletion('<Tab>')
+			end, { expr = true })
+
 		end
 	end,
 })
