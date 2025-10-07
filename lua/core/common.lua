@@ -16,7 +16,7 @@ vim.diagnostic.config({
 	},
 })
 
-local function confirmCompletion(input)
+local function confirm_completion(input)
 	local key
 
 	if vim.fn.pumvisible() == 1 then
@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			end)
 
 			vim.keymap.set('i', '<Tab>', function()
-				return confirmCompletion('<Tab>')
+				return confirm_completion('<Tab>')
 			end, { expr = true })
 
 		end

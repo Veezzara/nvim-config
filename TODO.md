@@ -3,4 +3,5 @@
 - [ ] Formatter setup (prettier/csharpier)
 - [ ] EditorConfig setup
 - [ ] ESLint setup
+- [ ] Refactor Remapper
 
