@@ -6,7 +6,8 @@ remapper.add_remap("n", "<leader>w", ":w<CR>", "Save file", { "File Management" 
 remapper.add_remap("n", "<leader>q", ":q<CR>", "Quit Neovim", { "File Management" })
 remapper.add_remap('v', 'K', ":m '<-2<CR>gv=gv", "Move line up", { "Navigation" })
 remapper.add_remap('v', 'J', ":m '>+1<CR>gv=gv", "Move line down", { "Navigation" })
-remapper.add_remap('n', '<leader>nh', ':noh', 'Clear highlights', { 'Common' })
+remapper.add_remap('n', '<leader>nh', ':noh<CR>', 'Clear highlights', { 'Common' })
+remapper.add_remap('n', '<leader>b', ':Neotree reveal left<CR>', 'Reveal Neotree', { 'File Management' })
 
 -- Telescope
 remapper.add_remap('n', '<leader>bl', builtin.buffers, 'Telescope buffers', { 'Search' })
