@@ -1,3 +1,5 @@
+require('custom.remapper')
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
@@ -8,6 +10,9 @@ vim.keymap.set('n', '<leader>so', ':write<CR> :source<CR>')
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
 vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format)
+
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 
 require('config.lazy')
 
