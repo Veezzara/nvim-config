@@ -3,6 +3,7 @@ require('custom.remapper')
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
+vim.opt.winborder = 'rounded'
 
 vim.g.mapleader = ' '
 
