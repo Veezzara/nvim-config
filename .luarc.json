@@ -1,5 +1,5 @@
 {
 	"workspace.library": [
-		"/usr/share/nvim/runtime/lua"
+		"$VIMRUNTIME"
 	]
 }
