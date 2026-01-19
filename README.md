@@ -4,4 +4,5 @@
 
 - tree-sitter-cli
     - a C compiler in path
+- ripgrep is recommended
 
