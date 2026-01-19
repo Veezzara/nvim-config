@@ -27,6 +27,9 @@ vim.keymap.set('n', '<leader>b', ':Neotree<CR>')
 vim.keymap.set('n', '<leader>ti', treesitter_installer.install_treesitter_parser)
 
 vim.keymap.set('n', '<leader>gd', ':Gitsigns diffthis<CR>')
+vim.keymap.set('n', '<leader>g', ':G<CR>')
+vim.keymap.set('n', '<leader>gc', ':G commit<CR>')
+vim.keymap.set('n', '<leader>gp', ':G push<CR>')
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(ev)
