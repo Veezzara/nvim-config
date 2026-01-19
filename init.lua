@@ -22,6 +22,8 @@ vim.keymap.set('n', '<leader>bl', builtin.buffers)
 vim.keymap.set('n', '<leader>f', builtin.find_files)
 vim.keymap.set('n', '<leader>lg', builtin.live_grep)
 
+vim.keymap.set('n', '<leader>b', ':Neotree<CR>')
+
 vim.keymap.set('n', '<leader>ti', treesitter_installer.install_treesitter_parser)
 
 vim.api.nvim_create_autocmd('LspAttach', {
