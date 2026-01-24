@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 require('config.lazy')
-
 local remapper = require('custom.remapper')
 local treesitter_installer = require('custom/treesitter-installer')
 local telescope_builtin = require('telescope.builtin')
@@ -49,6 +48,7 @@ remapper.set_keymap('n', 'gc', telescope_builtin.git_commits)
 remapper.set_keymap('n', 'gbc', telescope_builtin.git_bcommits)
 remapper.set_keymap('n', 'gb', telescope_builtin.git_branches)
 
+vim.opt.completeopt = { 'menu', 'popup', 'noselect' }
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(ev)
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -58,8 +58,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end
 })
 
-vim.cmd('set completeopt+=noselect')
 vim.diagnostic.config({
-  update_in_insert = true,
+	update_in_insert = true,
 })
-
