@@ -1,53 +1,53 @@
 vim.g.mapleader = ' '
 require('config.lazy')
 
-require('custom.remapper')
+local remapper = require('custom.remapper')
 local treesitter_installer = require('custom/treesitter-installer')
-local builtin = require('telescope.builtin')
+local telescope_builtin = require('telescope.builtin')
 
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 vim.opt.winborder = 'rounded'
 
-vim.keymap.set('n', '<leader>so', ':write<CR> :source<CR>')
-vim.keymap.set('n', '<leader>w', ':write<CR>')
-vim.keymap.set('n', '<leader>q', ':quit<CR>')
-vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format)
+remapper.set_keymap('n', '<leader>so', ':write<CR> :source<CR>')
+remapper.set_keymap('n', '<leader>w', ':write<CR>')
+remapper.set_keymap('n', '<leader>q', ':quit<CR>')
+remapper.set_keymap('n', '<leader>ff', vim.lsp.buf.format)
 
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+remapper.set_keymap('v', 'K', ":m '<-2<CR>gv=gv")
+remapper.set_keymap('v', 'J', ":m '>+1<CR>gv=gv")
 
-vim.keymap.set('n', '<leader>bl', builtin.buffers)
-vim.keymap.set('n', '<leader>f', builtin.find_files)
-vim.keymap.set('n', '<leader>lg', builtin.live_grep)
+remapper.set_keymap('n', '<leader>bl', telescope_builtin.buffers)
+remapper.set_keymap('n', '<leader>f', telescope_builtin.find_files)
+remapper.set_keymap('n', '<leader>lg', telescope_builtin.live_grep)
 
-vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>')
-vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+remapper.set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>')
+remapper.set_keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+remapper.set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+remapper.set_keymap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+remapper.set_keymap('n', '<leader>d', vim.diagnostic.open_float)
+remapper.set_keymap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
-vim.keymap.set('n', 'td', builtin.lsp_definitions)
-vim.keymap.set('n', 'ti', builtin.lsp_implementations)
-vim.keymap.set('n', 'tr', builtin.lsp_references)
-vim.keymap.set('n', 'tc', builtin.lsp_incoming_calls)
-vim.keymap.set('n', 'ts', builtin.lsp_workspace_symbols)
-vim.keymap.set('n', 'ds', builtin.lsp_document_symbols)
+remapper.set_keymap('n', 'td', telescope_builtin.lsp_definitions)
+remapper.set_keymap('n', 'ti', telescope_builtin.lsp_implementations)
+remapper.set_keymap('n', 'tr', telescope_builtin.lsp_references)
+remapper.set_keymap('n', 'tc', telescope_builtin.lsp_incoming_calls)
+remapper.set_keymap('n', 'ts', telescope_builtin.lsp_workspace_symbols)
+remapper.set_keymap('n', 'ds', telescope_builtin.lsp_document_symbols)
 
-vim.keymap.set('n', '<leader>b', ':Neotree<CR>')
+remapper.set_keymap('n', '<leader>b', ':Neotree<CR>')
 
-vim.keymap.set('n', '<leader>ti', treesitter_installer.install_treesitter_parser)
+remapper.set_keymap('n', '<leader>ti', treesitter_installer.install_treesitter_parser)
 
-vim.keymap.set('n', '<leader>gd', ':Gitsigns diffthis<CR>')
-vim.keymap.set('n', '<leader>g', ':G<CR>')
-vim.keymap.set('n', '<leader>gcm', ':G commit<CR>')
-vim.keymap.set('n', '<leader>gp', ':G push<CR>')
+remapper.set_keymap('n', '<leader>gd', ':Gitsigns diffthis<CR>')
+remapper.set_keymap('n', '<leader>g', ':G<CR>')
+remapper.set_keymap('n', '<leader>gcm', ':G commit<CR>')
+remapper.set_keymap('n', '<leader>gp', ':G push<CR>')
 
-vim.keymap.set('n', 'gc', builtin.git_commits)
-vim.keymap.set('n', 'gbc', builtin.git_bcommits)
-vim.keymap.set('n', 'gb', builtin.git_branches)
+remapper.set_keymap('n', 'gc', telescope_builtin.git_commits)
+remapper.set_keymap('n', 'gbc', telescope_builtin.git_bcommits)
+remapper.set_keymap('n', 'gb', telescope_builtin.git_branches)
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(ev)
@@ -59,3 +59,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.cmd('set completeopt+=noselect')
+vim.diagnostic.config({
+  update_in_insert = true,
+})
+
