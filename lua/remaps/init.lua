@@ -21,6 +21,7 @@ remapper.set_keymap('n', 'gD', vim.lsp.buf.declaration, { desc = 'Declaration' }
 remapper.set_keymap('n', 'go', vim.lsp.buf.type_definition, { desc = 'Type definition' })
 remapper.set_keymap('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating window' })
 remapper.set_keymap('n', '<F4>', vim.lsp.buf.code_action, { desc = 'Code actions' })
+remapper.set_keymap('i', '<C-Space>', vim.lsp.completion.get, { desc = 'Trigger LSP completion' })
 
 remapper.set_keymap('n', 'td', telescope_builtin.lsp_definitions, { desc = 'Definitions list' })
 remapper.set_keymap('n', 'ti', telescope_builtin.lsp_implementations, { desc = 'Implementations list' })
@@ -44,3 +45,4 @@ remapper.set_keymap('n', 'gbc', telescope_builtin.git_bcommits, { desc = 'Git bu
 remapper.set_keymap('n', 'gb', telescope_builtin.git_branches, { desc = 'Git branches' })
 
 remapper.set_keymap('n', '<leader>rh', maps_picker.pick, { desc = 'Remapper help' })
+
