@@ -6,6 +6,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 vim.opt.winborder = 'rounded'
+vim.opt.autoread = true
 
 vim.opt.completeopt = { 'menu', 'popup', 'noselect' }
 vim.api.nvim_create_autocmd('LspAttach', {
