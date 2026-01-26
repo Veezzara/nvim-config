@@ -8,6 +8,7 @@ remapper.set_keymap('n', '<leader>so', ':write<CR> :source<CR>', { desc = 'Sourc
 remapper.set_keymap('n', '<leader>w', ':write<CR>', { desc = 'Write' })
 remapper.set_keymap('n', '<leader>q', ':quit<CR>', { desc = 'Quit' })
 remapper.set_keymap('n', '<leader>ff', vim.lsp.buf.format, { desc = 'Format file' })
+remapper.set_keymap('n', '<leader>nh', ':noh<CR>', { desc = 'Clear highlights' })
 
 remapper.set_keymap('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up' })
 remapper.set_keymap('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down' })
@@ -15,6 +16,7 @@ remapper.set_keymap('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down' })
 remapper.set_keymap('n', '<leader>bl', buffers.open, { desc = 'Buffers list' })
 remapper.set_keymap('n', '<leader>f', telescope_builtin.find_files, { desc = 'Find files' })
 remapper.set_keymap('n', '<leader>lg', telescope_builtin.live_grep, { desc = 'Live grep' })
+remapper.set_keymap('n', '<leader>rf', telescope_builtin.oldfiles, { desc = 'Recent files' })
 
 remapper.set_keymap('n', '<F2>', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 remapper.set_keymap('n', 'gs', vim.lsp.buf.signature_help, { desc = 'Signature help' })
