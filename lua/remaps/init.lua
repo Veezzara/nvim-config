@@ -1,7 +1,8 @@
-local remapper = require('custom.remapper')
-local maps_picker = require('custom.maps_picker')
 local treesitter_installer = require('custom/treesitter-installer')
 local telescope_builtin = require('telescope.builtin')
+local remapper = require('custom.remapper')
+local maps_picker = require('custom.maps_picker')
+local buffers = require('custom.buffers')
 
 remapper.set_keymap('n', '<leader>so', ':write<CR> :source<CR>', { desc = 'Source file' })
 remapper.set_keymap('n', '<leader>w', ':write<CR>', { desc = 'Write' })
@@ -11,7 +12,7 @@ remapper.set_keymap('n', '<leader>ff', vim.lsp.buf.format, { desc = 'Format file
 remapper.set_keymap('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up' })
 remapper.set_keymap('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down' })
 
-remapper.set_keymap('n', '<leader>bl', telescope_builtin.buffers, { desc = 'Buffers list' })
+remapper.set_keymap('n', '<leader>bl', buffers.open, { desc = 'Buffers list' })
 remapper.set_keymap('n', '<leader>f', telescope_builtin.find_files, { desc = 'Find files' })
 remapper.set_keymap('n', '<leader>lg', telescope_builtin.live_grep, { desc = 'Live grep' })
 
@@ -45,4 +46,3 @@ remapper.set_keymap('n', 'gbc', telescope_builtin.git_bcommits, { desc = 'Git bu
 remapper.set_keymap('n', 'gb', telescope_builtin.git_branches, { desc = 'Git branches' })
 
 remapper.set_keymap('n', '<leader>rh', maps_picker.pick, { desc = 'Remapper help' })
-
