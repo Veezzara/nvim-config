@@ -6,7 +6,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 vim.opt.winborder = 'rounded'
-vim.opt.autoread = true
 
 vim.opt.completeopt = { 'menu', 'popup', 'noselect' }
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -20,4 +19,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.diagnostic.config({
 	update_in_insert = true,
+})
+
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+	pattern = "*",
+	callback = function()
+		vim.cmd("silent! checktime")
+	end,
 })
