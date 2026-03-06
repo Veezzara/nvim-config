@@ -15,8 +15,10 @@ function M.is_parser_installed()
 end
 
 function M.install_treesitter_parser()
-	local is_installed = M.is_parser_installed()
 	local detected_lang = M.get_lang()
+	if not detected_lang then return end
+
+	local is_installed = M.is_parser_installed()
 
 	if not is_installed then
 		vim.schedule(function()
@@ -33,7 +35,7 @@ function M.install_treesitter_parser()
 				end)
 		end)
 	else
-		print('Parser for ' .. detected_lang .. 'is already installed')
+		print('Parser for ' .. detected_lang .. ' is already installed')
 	end
 end
 

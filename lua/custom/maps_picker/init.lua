@@ -13,9 +13,8 @@ function M.pick(opts)
 	opts = opts or themes.get_dropdown()
 
 	local lhs_max_length = 0
-	for i, v in ipairs(maps) do
+	for _, v in ipairs(maps) do
 		local length = string.len(v.lhs)
-		print(length)
 		if (length > lhs_max_length) then
 			lhs_max_length = length
 		end
@@ -43,9 +42,9 @@ function M.pick(opts)
 			entry_maker = function(entry)
 				local lhs = entry.lhs
 				local rhs = entry.rhs
-				opts = entry.opts or {}
+				local entry_opts = entry.opts or {}
 
-				local desc = opts.desc
+				local desc = entry_opts.desc
 
 				if not desc or desc == '' then
 					if type(rhs) == 'function' then

@@ -39,12 +39,12 @@ remapper.set_keymap('n', '<leader>b', ':Neotree<CR>', { desc = 'Toggle Neotree' 
 remapper.set_keymap('n', '<leader>ti', treesitter_installer.install_treesitter_parser,
 	{ desc = 'Install Treesitter parser' })
 
-remapper.set_keymap('n', '<leader>gd', ':Gitsigns diffthis<CR>', { desc = 'Neotree' })
+remapper.set_keymap('n', '<leader>gd', ':Gitsigns diffthis<CR>', { desc = 'Git diff' })
 remapper.set_keymap('n', '<leader>g', ':G<CR>', { desc = 'Fugitive' })
 remapper.set_keymap('n', '<leader>gcm', ':G commit<CR>', { desc = 'Git commit' })
 remapper.set_keymap('n', '<leader>gp', ':G push<CR>', { desc = 'Git push' })
 
-remapper.set_keymap('n', 'gc', telescope_builtin.git_commits, { desc = 'Git commits' })
+remapper.set_keymap('n', '<leader>gc', telescope_builtin.git_commits, { desc = 'Git commits' })
 remapper.set_keymap('n', 'gbc', telescope_builtin.git_bcommits, { desc = 'Git buffer commits' })
 remapper.set_keymap('n', 'gb', telescope_builtin.git_branches, { desc = 'Git branches' })
 
