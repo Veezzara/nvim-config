@@ -18,24 +18,43 @@ vim.opt.completeopt = { 'menu', 'popup', 'noselect' }
 
 local augroup = vim.api.nvim_create_augroup('MyInit', { clear = true })
 vim.api.nvim_create_autocmd('LspAttach', {
-	group = augroup,
-	callback = function(ev)
-		local client = vim.lsp.get_client_by_id(ev.data.client_id)
-		if client:supports_method('textDocument/completion') then
-			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-		end
-	end
+  group = augroup,
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    end
+    if client:supports_method('completionItem/resolve') then
+      vim.api.nvim_create_autocmd('CompleteDone', {
+        group = augroup,
+        buffer = ev.buf,
+        callback = function()
+          local item = vim.tbl_get(vim.v.completed_item, 'user_data', 'nvim', 'lsp', 'completion_item')
+          if not item then return end
+          if item.additionalTextEdits then
+            vim.lsp.util.apply_text_edits(item.additionalTextEdits, ev.buf, client.offset_encoding)
+            return
+          end
+          client:request('completionItem/resolve', item, function(_, resolved)
+            if resolved and resolved.additionalTextEdits then
+              vim.lsp.util.apply_text_edits(resolved.additionalTextEdits, ev.buf, client.offset_encoding)
+            end
+          end)
+        end,
+      })
+    end
+  end
 })
 
 vim.diagnostic.config({
-	update_in_insert = true,
+  update_in_insert = true,
 })
 
 vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
-	group = augroup,
-	pattern = "*",
-	callback = function()
-		vim.cmd("silent! checktime")
-	end,
+  group = augroup,
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! checktime")
+  end,
 })
