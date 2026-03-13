@@ -52,7 +52,7 @@ remapper.set_keymap('n', 'gb', telescope_builtin.git_branches, { desc = 'Git bra
 remapper.set_keymap('n', '<leader>rh', maps_picker.pick, { desc = 'Remapper help' })
 
 remapper.set_keymap('n', '<leader>tt', ':botright split | terminal<CR>', { desc = 'New terminal' })
-remapper.set_keymap('t', '<Esc>', '<C-\\><C-n>', { desc = 'Terminal normal mode' })
+remapper.set_keymap('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Terminal normal mode' })
 
 remapper.set_keymap('n', '<C-Up>',    function() splits.resize('up') end,    { desc = 'Resize split up' })
 remapper.set_keymap('n', '<C-Down>',  function() splits.resize('down') end,  { desc = 'Resize split down' })
