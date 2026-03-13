@@ -1,4 +1,5 @@
 local treesitter_installer = require('custom/treesitter-installer')
+local splits = require('custom.splits')
 local telescope_builtin = require('telescope.builtin')
 local conform = require('conform')
 local remapper = require('custom.remapper')
@@ -49,3 +50,11 @@ remapper.set_keymap('n', 'gbc', telescope_builtin.git_bcommits, { desc = 'Git bu
 remapper.set_keymap('n', 'gb', telescope_builtin.git_branches, { desc = 'Git branches' })
 
 remapper.set_keymap('n', '<leader>rh', maps_picker.pick, { desc = 'Remapper help' })
+
+remapper.set_keymap('n', '<leader>tt', ':botright split | terminal<CR>', { desc = 'New terminal' })
+remapper.set_keymap('t', '<Esc>', '<C-\\><C-n>', { desc = 'Terminal normal mode' })
+
+remapper.set_keymap('n', '<C-Up>',    function() splits.resize('up') end,    { desc = 'Resize split up' })
+remapper.set_keymap('n', '<C-Down>',  function() splits.resize('down') end,  { desc = 'Resize split down' })
+remapper.set_keymap('n', '<C-Left>',  function() splits.resize('left') end,  { desc = 'Resize split left' })
+remapper.set_keymap('n', '<C-Right>', function() splits.resize('right') end, { desc = 'Resize split right' })
